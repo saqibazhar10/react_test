@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
 
@@ -23,7 +23,7 @@ class DishDetail extends Component {
                             <CardText> {dish.description} </CardText>
                         </CardBody>
                     </Card>
-                </div>   
+                </div>
             );
         }
         else {
@@ -33,7 +33,7 @@ class DishDetail extends Component {
         }
     }
 
-    renderComments(comments){
+    renderComments(comments) {
 
         if (comments == null) {
             return (<div></div>)
@@ -43,12 +43,12 @@ class DishDetail extends Component {
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
                     <p>-- {comment.author},
-                    {" "}
-                    {new Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "2-digit"
-                    }).format(new Date(Date.parse(comment.date)))}
+                        {" "}
+                        {new Intl.DateTimeFormat("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "2-digit"
+                        }).format(new Date(comment.date))}
                     </p>
                 </li>
             )
@@ -66,21 +66,22 @@ class DishDetail extends Component {
     }
 
 
-    render(){
+    render() {
         const dish = this.props.dish
 
-        
+
         if (dish == null) {
             return (<div></div>);
         }
 
-        const dishItem = this.renderDish(dish);
-        const dishComment = this.renderComments(dish.comments);
+        const Card1 = this.renderDish(dish);
+        const Card2 = this.renderComments(dish.comments);
 
         return (
-            <div className='row'>
-                {dishItem}
-                {dishComment}
+            <div className="container">
+                <div className="row">
+                    {Card1} {Card2}
+                </div>
             </div>
         )
     }
