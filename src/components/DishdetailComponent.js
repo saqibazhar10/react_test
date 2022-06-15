@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-
-
-
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+    import {Link } from 'react-router-dom'
 // componentDidMount(){
 //     console.log("dishdetail componentdidmount invoked")
 // }
@@ -67,7 +66,7 @@ function RenderComments({ comments }) {
 
 
 const DishDetail = (props) => {
-    // console.log("render invoked dish")
+    console.log("render invoked dish")
     const dish = props.dish
 
 
@@ -78,10 +77,23 @@ const DishDetail = (props) => {
 
     return (
         <div className="container">
+            <div className="container">
             <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{props.dish.name}</h3>
+                    <hr />
+                </div>                
+            </div>
+        </div>
+            <div className="row">
+                
 
                 <RenderDish dish={props.dish} />
-                <RenderComments comments={props.dish.comments} />
+                <RenderComments comments={props.comments} />
 
             </div>
         </div>
